@@ -14,6 +14,7 @@ import copy
 import PIL.Image
 from io import BytesIO
 from IPython.display import clear_output, Image, display
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def get_dataloaders(input_size, batch_size, shuffle = True):
     '''
@@ -80,10 +81,10 @@ def train_model(model, dataloaders, criterion, optimizer, save_dir = None, save_
                (Variations on gradient descent)
     num_epochs: How many epochs to train for
     save_dir: Where to save the best model weights that are found, 
-              as they are found. Will save to save_dir/weights_best.pt
+              as they are found. Will save to save_dir/weights_best.pth
               Using None will not write anything to disk
     save_all_epochs: Whether to save weights for ALL epochs, not just the best
-                     validation error epoch. Will save to save_dir/weights_e{#}.pt
+                     validation error epoch. Will save to save_dir/weights_e{#}.pth
     '''
     since = time.time()
     
