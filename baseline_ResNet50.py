@@ -51,7 +51,6 @@ def get_dataloaders(input_size, batch_size, shuffle = True):
     dataloaders_dict = {x: torch.utils.data.DataLoader(image_datasets[x], batch_size=batch_size, shuffle=False if x != 'train' else shuffle, num_workers=4) for x in data_transforms.keys()}
     return dataloaders_dict, class_names
 
-
 def initialize_model(num_classes):
     '''
     Initialize the pre-trained ResNet50 model
@@ -69,7 +68,6 @@ def initialize_model(num_classes):
         nn.Linear(num_ftrs, num_classes)
     )
     return model_ft, input_size
-
 
 def train_model(model, dataloaders, criterion, optimizer, save_dir = None, save_all_epochs=False, num_epochs=25):
     '''
@@ -203,81 +201,83 @@ def evaluate(model, dataloader, criterion, is_labelled = False, generate_labels 
     return epoch_loss, epoch_top1_acc, epoch_top5_acc, predicted_labels
 
 
-# Separated data path (contains train, val and test)
-data_dir = './separated-data'
-num_classes = 5
-batch_size = 16
-shuffle_datasets = True
-num_epochs = 50
-save_dir = "weights"
-os.makedirs(save_dir, exist_ok=True)
-save_all_epochs = True
 
-model, input_size = initialize_model(num_classes = num_classes)
-model = model.to(device)
-dataloaders, class_name = get_dataloaders(input_size, batch_size, shuffle_datasets)
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+if __name__ == '__main__':
+    # Separated data path (contains train, val and test)
+    data_dir = './separated-data'
+    num_classes = 5
+    batch_size = 16
+    shuffle_datasets = True
+    num_epochs = 50
+    save_dir = "weights"
+    os.makedirs(save_dir, exist_ok=True)
+    save_all_epochs = True
 
-# training
-print("Training progress")
-print("=" * 20)
-trained_model, train_losses, train_acc, val_losses, val_acc = train_model(model=model, dataloaders=dataloaders, criterion=criterion, optimizer=optimizer, save_dir=save_dir, save_all_epochs=save_all_epochs, num_epochs=num_epochs)
+    model, input_size = initialize_model(num_classes = num_classes)
+    model = model.to(device)
+    dataloaders, class_name = get_dataloaders(input_size, batch_size, shuffle_datasets)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-# save the model
-torch.save(trained_model.state_dict(), "weights/resnet50")
+    # training
+    print("Training progress")
+    print("=" * 20)
+    trained_model, train_losses, train_acc, val_losses, val_acc = train_model(model=model, dataloaders=dataloaders, criterion=criterion, optimizer=optimizer, save_dir=save_dir, save_all_epochs=save_all_epochs, num_epochs=num_epochs)
 
-# plot loss and accuracy
-print()
-print("Plots of loss and accuracy during training")
-print("=" * 20)
+    # save the model
+    torch.save(trained_model.state_dict(), "weights/resnet50")
 
-x = np.arange(0,50,1)
-plt.plot(x, train_losses, label='Training loss')
-plt.plot(x, val_losses, label='Validation loss')
-plt.legend(frameon=False)
-plt.title("Pre-trained Resnet50")
-plt.xlabel("Epoch")
-plt.ylabel("Loss")
-plt.show()
+    # plot loss and accuracy
+    print()
+    print("Plots of loss and accuracy during training")
+    print("=" * 20)
 
-plt.plot(x, train_acc, label='Training accuracy')
-plt.plot(x, val_acc, label='Validation accuracy')
-plt.legend(frameon=False)
-plt.title("Pre-trained Resnet50")
-plt.xlabel("Epoch")
-plt.ylabel("Accuracy")
-plt.show()
+    x = np.arange(0,50,1)
+    plt.plot(x, train_losses, label='Training loss')
+    plt.plot(x, val_losses, label='Validation loss')
+    plt.legend(frameon=False)
+    plt.title("Pre-trained Resnet50")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.show()
 
-# evaluation
-print()
-print("Evaluation on validation and test set")
-print("=" * 20)
+    plt.plot(x, train_acc, label='Training accuracy')
+    plt.plot(x, val_acc, label='Validation accuracy')
+    plt.legend(frameon=False)
+    plt.title("Pre-trained Resnet50")
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy")
+    plt.show()
 
-generate_validation_labels = True
-val_loss, val_top1, val_top5, val_labels = evaluate(model, dataloaders['val'], criterion, is_labelled = True, generate_labels = generate_validation_labels, k = 5)
+    # evaluation
+    print()
+    print("Evaluation on validation and test set")
+    print("=" * 20)
 
-epoch_loss, top1_acc, top5_acc, test_labels = evaluate(model, dataloaders['test'], criterion, is_labelled = True, generate_labels = True, k = 5)
-print("Top 1 accuracy on test set is", top1_acc)
+    generate_validation_labels = True
+    val_loss, val_top1, val_top5, val_labels = evaluate(model, dataloaders['val'], criterion, is_labelled = True, generate_labels = generate_validation_labels, k = 5)
 
-# Get the confusion matrix from test
-confusion_matrix = {x: [0,0,0,0,0] for x in class_name}
-test_loader = dataloaders['test']
-running_top1_correct = 0
-for inputs, labels in tqdm(test_loader):
-    inputs = inputs.to(device)
-    labels = labels.to(device)
-    outputs = model(inputs)
-    _, preds = torch.topk(outputs, k=1, dim=1)
-    for i in range(len(labels)):
-        original_label = int(labels[i])
-        confusion_matrix[class_name[original_label]][int(preds[i])] += 1
-        
-    running_top1_correct += torch.sum(preds[:, 0] == labels.data)
+    epoch_loss, top1_acc, top5_acc, test_labels = evaluate(model, dataloaders['test'], criterion, is_labelled = True, generate_labels = True, k = 5)
+    print("Top 1 accuracy on test set is", top1_acc)
 
-epoch_top1_acc = float(running_top1_correct.double() / len(test_loader.dataset))
-percentage = {x: [y /sum(confusion_matrix[x]) for y in confusion_matrix[x]] for x in confusion_matrix.keys()}
-print()
-print("Confusion matrix")
-print("=" * 20)
-print(percentage)
+    # Get the confusion matrix from test
+    confusion_matrix = {x: [0,0,0,0,0] for x in class_name}
+    test_loader = dataloaders['test']
+    running_top1_correct = 0
+    for inputs, labels in tqdm(test_loader):
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+        outputs = model(inputs)
+        _, preds = torch.topk(outputs, k=1, dim=1)
+        for i in range(len(labels)):
+            original_label = int(labels[i])
+            confusion_matrix[class_name[original_label]][int(preds[i])] += 1
+            
+        running_top1_correct += torch.sum(preds[:, 0] == labels.data)
+
+    epoch_top1_acc = float(running_top1_correct.double() / len(test_loader.dataset))
+    percentage = {x: [y /sum(confusion_matrix[x]) for y in confusion_matrix[x]] for x in confusion_matrix.keys()}
+    print()
+    print("Confusion matrix")
+    print("=" * 20)
+    print(percentage)
