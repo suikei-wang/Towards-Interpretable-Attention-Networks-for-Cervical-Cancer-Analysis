@@ -101,7 +101,7 @@ class UNet(nn.Module):
 class Smear(Dataset):
     def __init__(self, dataPath):
         self.dataPath = dataPath
-        self.imagesPath = sorted(glob.glob(os.path.join(dataPath, 'image/*.png')))
+        self.imagesPath = glob.glob(os.path.join(dataPath, 'images/*.bmp'))
         
     def augment(self, image, flipMode):
         flipImg = cv2.flip(image, flipMode)
@@ -112,7 +112,7 @@ class Smear(Dataset):
 
     def __getitem__(self, idx):
         imagePath = self.imagesPath[idx]
-        labelPath = imagePath.replace('image', 'label')
+        labelPath = imagePath.replace('images', 'labels')
         image = cv2.imread(imagePath)
         label = cv2.imread(labelPath)
         
@@ -148,16 +148,17 @@ def train_model(model, dataPath, epochs=40, batch_size=2, lr=1e-5):
             print("epoch: ", epoch, "iteration: ", i, "loss: ", loss.item())
             if loss < bestLoss:
                 bestLoss = loss
-                torch.save(model.state_dict(), "/content/drive/MyDrive/cell_semantic_segmentation-master/best_model.pth")
+                torch.save(model.state_dict(), "weights/segmentation")
             
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
 if __name__ == '__main__':
-    train_data = Smear("/content/drive/MyDrive/cell_semantic_segmentation-master/data/train")
-    len(train_data)
 
+    train_path = "smear-segmentation/train"
+ 
+    train_data = Smear(train_path)
     train_loader = torch.utils.data.DataLoader(dataset=train_data,
                                             batch_size=2,
                                             shuffle=True)
@@ -165,4 +166,4 @@ if __name__ == '__main__':
     img.shape, lab.shape
 
     model = UNet(n_channels=1, n_classes=1)
-    train_model(model, dataPath="/content/drive/MyDrive/cell_semantic_segmentation-master/data/train")
+    train_model(model, dataPath=train_path)
