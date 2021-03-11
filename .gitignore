@@ -965,3 +965,6 @@ separated-data/test/im_Dyskeratotic/042.bmp
 separated-data/test/im_Dyskeratotic/007.bmp
 separated-data/test/im_Dyskeratotic/005.bmp
 separated-data/test/im_Dyskeratotic/001.bmp
+weights/resnet50
+weights/seg-model.pth
+weights/seg-pat-resnet50
