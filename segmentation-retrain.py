@@ -2,12 +2,13 @@ import torch
 import numpy as np
 import os
 import cv2
-
-import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
 from matplotlib import pyplot as plt
+from torch.utils.data import Dataset
+import os, glob
+import random
+
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -97,20 +98,71 @@ class UNet(nn.Module):
         pred = self.output(x)
         return pred
 
+class Smear(Dataset):
+    def __init__(self, dataPath):
+        self.dataPath = dataPath
+        self.imagesPath = sorted(glob.glob(os.path.join(dataPath, 'image/*.png')))
+        
+    def augment(self, image, flipMode):
+        flipImg = cv2.flip(image, flipMode)
+        return flipImg
+    
+    def __len__(self):
+        return len(self.imagesPath)
+
+    def __getitem__(self, idx):
+        imagePath = self.imagesPath[idx]
+        labelPath = imagePath.replace('image', 'label')
+        image = cv2.imread(imagePath)
+        label = cv2.imread(labelPath)
+        
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        label = cv2.cvtColor(label, cv2.COLOR_BGR2GRAY)
+        image = image.reshape(1, image.shape[0], image.shape[1])
+        label = label.reshape(1, label.shape[0], label.shape[1])
+        
+        if label.max() > 1:
+            label = label / 255
+        flipMode = random.choice([-1, 0, 1, 2])
+        if flipMode != 2:
+            image = self.augment(image, flipMode)
+            label = self.augment(label, flipMode)
+        return image, label
+    
+def train_model(model, dataPath, epochs=40, batch_size=2, lr=1e-5):
+    optimizer = torch.optim.RMSprop(model.parameters(), lr=lr, weight_decay=1e-8, momentum=0.9)
+    loss_fn = nn.BCEWithLogitsLoss()
+    bestLoss = float('inf')
+    
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    
+    for epoch in range(epochs):
+        model.train()
+        
+        for i, (image, label) in enumerate(train_loader):
+            image, label = image.float().to(device), label.to(device)
+            
+            pred = model(image)
+            loss = loss_fn(pred, label)
+            print("epoch: ", epoch, "iteration: ", i, "loss: ", loss.item())
+            if loss < bestLoss:
+                bestLoss = loss
+                torch.save(model.state_dict(), "/content/drive/MyDrive/cell_semantic_segmentation-master/best_model.pth")
+            
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
 if __name__ == '__main__':
+    train_data = Smear("/content/drive/MyDrive/cell_semantic_segmentation-master/data/train")
+    len(train_data)
+
+    train_loader = torch.utils.data.DataLoader(dataset=train_data,
+                                            batch_size=2,
+                                            shuffle=True)
+    img, lab = iter(train_loader).next()
+    img.shape, lab.shape
+
     model = UNet(n_channels=1, n_classes=1)
-    model.load_state_dict(torch.load("weights/seg-model.pth", map_location=torch.device(device)))
-    model.eval()
-
-    img = cv2.imread('separated-data/test/im_Dyskeratotic/001.bmp')
-    img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-    img = img.reshape(1, 1, img.shape[0], img.shape[1])
-    img_tensor = torch.from_numpy(img)
-    img_tesnor = img_tensor.to(device=device, dtype=torch.float32)
-
-    pred = model(img_tesnor)
-    pred = np.array(pred.data.cpu()[0][0])
-    pred[pred >= 0.5] = 255
-    pred[pred < 0.5] = 0
-
-    cv2.imwrite('results.png', pred)
+    train_model(model, dataPath="/content/drive/MyDrive/cell_semantic_segmentation-master/data/train")
