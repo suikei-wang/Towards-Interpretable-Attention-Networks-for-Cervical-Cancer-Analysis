@@ -101,7 +101,7 @@ class UNet(nn.Module):
 class Smear(Dataset):
     def __init__(self, dataPath):
         self.dataPath = dataPath
-        self.imagesPath = glob.glob(os.path.join(dataPath, 'images/*.bmp'))
+        self.imagesPath = glob.glob(os.path.join(dataPath, 'images/*.BMP'))
         
     def augment(self, image, flipMode):
         flipImg = cv2.flip(image, flipMode)
@@ -113,8 +113,12 @@ class Smear(Dataset):
     def __getitem__(self, idx):
         imagePath = self.imagesPath[idx]
         labelPath = imagePath.replace('images', 'labels')
+        labelPath = labelPath.replace('.BMP', '-d.bmp')
         image = cv2.imread(imagePath)
         label = cv2.imread(labelPath)
+
+        image = cv2.resize(image, (512, 512))
+        label = cv2.resize(label, (512, 512))
         
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         label = cv2.cvtColor(label, cv2.COLOR_BGR2GRAY)
@@ -157,11 +161,12 @@ def train_model(model, dataPath, epochs=40, batch_size=2, lr=1e-5):
 if __name__ == '__main__':
 
     train_path = "smear-segmentation/train"
- 
     train_data = Smear(train_path)
+
     train_loader = torch.utils.data.DataLoader(dataset=train_data,
                                             batch_size=2,
                                             shuffle=True)
+
     img, lab = iter(train_loader).next()
     img.shape, lab.shape
 
