@@ -4,12 +4,14 @@
 
 #### Baseline2 - ResNet - Segmentated Patches
 
-- Train on masked images and only learn useful part of the image (Mask CNN w ResNet50?)
-- Test on masked whole images
+- Train a segmentation model on the Smear dataset (with masked label)
+- Apply the segmentation model to the SPIKaMeD dataset, now we also got the masked label
+- Train ResNet50 on the masked region of whole image only
+- Test the model on masked  whole images
 
 #### Generalization test
 
-- Finetune the pre-trained model in Baseline2 on Smear2005 (try 7:3 train and test firstly, then apply 5:95 train and test to see the result)
+- Finetune the pre-trained model in Baseline2 on Smear2005 for **classification** (try 7:3 train and test firstly, then apply 5:95 train and test to see the result)
 
 #### Better CNN
 
