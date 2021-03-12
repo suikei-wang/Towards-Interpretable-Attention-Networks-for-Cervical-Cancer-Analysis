@@ -8,8 +8,6 @@ from matplotlib import pyplot as plt
 from torch.utils.data import Dataset
 import os, glob
 import random
-
-
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 class DoubleConv(nn.Module):

@@ -98,7 +98,28 @@ if __name__ == '__main__':
     model.load_state_dict(torch.load("weights/seg-model.pth", map_location=torch.device(device)))
     model.eval()
 
-    img = cv2.imread('separated-data/test/im_Dyskeratotic/001.bmp')
+    data_dir = 'separated-data'
+    # classes = ["im_Dyskeratotic", "im_Koilocytotic", "im_Metaplastic", "im_Parabasal", "im_Superficial-Intermediate"]
+
+    # for cell in classes:
+    #     cell_path = os.path.join(data_dir, cell)
+    #     files = os.listdir(cell_path)
+    #     files = [os.path.join(cell_path, f) for f in files if f.endswith('.bmp')]
+
+    #     for f in files:
+    #         img = cv2.imread(f)
+    #         img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+    #         img = img.reshape(1, 1, img.shape[0], img.shape[1])
+    #         img_tensor = torch.from_numpy(img)
+    #         img_tesnor = img_tensor.to(device=device, dtype=torch.float32)
+
+    #         pred = model(img_tesnor)
+    #         pred = np.array(pred.data.cpu()[0][0])
+    #         pred[pred >= 0.5] = 255
+    #         pred[pred < 0.5] = 0
+
+    #         cv2.imwrite(os.path.join(cell_path, f), pred)
+    img = cv2.imread('separated-data/test/im_Dyskeratotic/005.bmp')
     img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     img = img.reshape(1, 1, img.shape[0], img.shape[1])
     img_tensor = torch.from_numpy(img)
