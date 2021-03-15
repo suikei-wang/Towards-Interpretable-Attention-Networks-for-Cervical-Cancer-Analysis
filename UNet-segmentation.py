@@ -94,11 +94,11 @@ class UNet(nn.Module):
         return pred
 
 if __name__ == '__main__':
-    model = UNet(n_channels=1, n_classes=1)
-    model.load_state_dict(torch.load("weights/seg-model.pth", map_location=torch.device(device)))
-    model.eval()
+    # model = UNet(n_channels=1, n_classes=1)
+    # model.load_state_dict(torch.load("weights/seg-model.pth", map_location=torch.device(device)))
+    # model.eval()
 
-    data_dir = 'separated-data'
+    # data_dir = 'separated-data'
     # classes = ["im_Dyskeratotic", "im_Koilocytotic", "im_Metaplastic", "im_Parabasal", "im_Superficial-Intermediate"]
 
     # for cell in classes:
@@ -119,15 +119,30 @@ if __name__ == '__main__':
     #         pred[pred < 0.5] = 0
 
     #         cv2.imwrite(os.path.join(cell_path, f), pred)
-    img = cv2.imread('separated-data/test/im_Dyskeratotic/005.bmp')
-    img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-    img = img.reshape(1, 1, img.shape[0], img.shape[1])
-    img_tensor = torch.from_numpy(img)
-    img_tesnor = img_tensor.to(device=device, dtype=torch.float32)
 
-    pred = model(img_tesnor)
-    pred = np.array(pred.data.cpu()[0][0])
-    pred[pred >= 0.5] = 255
-    pred[pred < 0.5] = 0
+    # img = cv2.imread('separated-data/test/im_Dyskeratotic/005.bmp')
+    # img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+    # img = img.reshape(1, 1, img.shape[0], img.shape[1])
+    # img_tensor = torch.from_numpy(img)
+    # img_tesnor = img_tensor.to(device=device, dtype=torch.float32)
 
-    cv2.imwrite('results.png', pred)
+    # pred = model(img_tesnor)
+    # pred = np.array(pred.data.cpu()[0][0])
+    # pred[pred >= 0.5] = 255
+    # pred[pred < 0.5] = 0
+
+    # cv2.imwrite('results.png', pred)
+
+    import cv2
+    import numpy as np
+
+    # opencv loads the image in BGR, convert it to RGB
+    img = cv2.cvtColor(cv2.imread('separated-data/test/im_Dyskeratotic/001.bmp'),
+                    cv2.COLOR_BGR2RGB)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # threshold input image as mask
+    
+    ret, thresh = cv2.threshold(gray,0,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
+
+    cv2.imwrite('results.png', thresh)
