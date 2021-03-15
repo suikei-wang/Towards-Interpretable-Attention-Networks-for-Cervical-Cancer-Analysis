@@ -5,10 +5,8 @@ import pathlib
 
 # the original dataset downloaded from http://www.cs.uoi.gr/~marina/sipakmed.html
 data_dir = "SPIKaMeD"
-# classes = ["im_Dyskeratotic", "im_Koilocytotic", "im_Metaplastic", "im_Parabasal", "im_Superficial-Intermediate"]
-classes = ["carcinoma_in_situ", "light_dysplastic", "moderate_dysplastic", "normal_columnar", "normal_intermediate", "normal_superficiel", "severe_dysplastic"]
-# output_dir = "separated-data"
-output_dir = "separated-smear"
+classes = ["im_Dyskeratotic", "im_Koilocytotic", "im_Metaplastic", "im_Parabasal", "im_Superficial-Intermediate"]
+output_dir = "separated-data"
 
 # train:val:test
 ratio = [0.7, 0.2, 0.1]
