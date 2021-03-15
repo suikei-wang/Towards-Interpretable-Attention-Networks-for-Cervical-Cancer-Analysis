@@ -1,11 +1,10 @@
 ## Project Steps
 
-#### Baseline - ResNet50 - Whole Images			#Done, TOP1ACC = 85%#
+#### Baseline - ResNet50 - Whole Images													:white_check_mark: TOP1ACC = 85%#
 
 #### Baseline2 - ResNet - Segmentated Patches
 
-- Train a segmentation model on the Smear dataset (with masked label)
-- Apply the segmentation model to the SPIKaMeD dataset, now we also got the masked label
+- Get the masked label of SPIKaMeD 												   	:white_check_mark: 
 - Train ResNet50 on the masked region of whole image only
 - Test the model on masked  whole images
 
