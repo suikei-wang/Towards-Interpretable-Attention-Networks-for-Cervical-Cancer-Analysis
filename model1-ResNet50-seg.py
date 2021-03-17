@@ -204,7 +204,7 @@ def evaluate(model, dataloader, criterion, is_labelled = False, generate_labels 
 
 if __name__ == '__main__':
     # Separated data path (contains train, val and test)
-    data_dir = 'separated-data'
+    data_dir = 'seg-separated-data'
     num_classes = 5
     batch_size = 16
     shuffle_datasets = True
@@ -225,7 +225,7 @@ if __name__ == '__main__':
     trained_model, train_losses, train_acc, val_losses, val_acc = train_model(model=model, dataloaders=dataloaders, criterion=criterion, optimizer=optimizer, save_dir=save_dir, save_all_epochs=save_all_epochs, num_epochs=num_epochs)
 
     # save the model
-    torch.save(trained_model.state_dict(), "weights/resnet50")
+    torch.save(trained_model.state_dict(), "weights/model1")
 
     # plot loss and accuracy
     print()
