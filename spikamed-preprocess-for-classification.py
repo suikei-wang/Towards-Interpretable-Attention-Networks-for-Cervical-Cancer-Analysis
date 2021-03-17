@@ -15,6 +15,7 @@ def split_folder(data_dir, output_dir, ratio):
     # for each type of cell 
     for cell in classes:
         # locate cells path
+        # add cropped if using cropped images
         cell_path = os.path.join(data_dir, cell)
         files = os.listdir(cell_path)
         files = [os.path.join(cell_path, f) for f in files if f.endswith('.bmp')]
