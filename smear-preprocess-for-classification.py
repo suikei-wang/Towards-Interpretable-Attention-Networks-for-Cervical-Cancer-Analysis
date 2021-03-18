@@ -8,7 +8,7 @@ classes = ["carcinoma_in_situ", "light_dysplastic", "moderate_dysplastic", "norm
 output_dir = "separated-smear"
 
 # train:test
-ratio = [0.9, 0.1]
+ratio = [0.2, 0.8]
 
 def split_folder(data_dir, output_dir, ratio):
     # for each type of cell 
