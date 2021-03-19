@@ -24,6 +24,14 @@
 
 #### :white_check_mark: TOP1ACC on test = 95.84%
 
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |   0.975   | 0.951  |  0.963   |   82    |
+| Koilocytotic |   0.895   | 0.928  |  0.911   |   83    |
+| Metaplastic  |   0.95    |  0.95  |   0.95   |   80    |
+|  Parabasal   |     1     | 0.988  |  0.994   |   80    |
+| Superficial  |   0.988   | 0.988  |  0.988   |   84    |
+
 | predict\truth | Dys-  | Koi-  | Met-  | Par- | Sup-  |
 | :-----------: | :---: | :---: | :---: | :--: | :---: |
 | Dyskeratotic  | 0.963 | 0.036 |  0.0  | 0.0  |  0.0  |
@@ -36,7 +44,17 @@
 
 (Train:test=1:9, 50 epochs training)
 
-####  																																:white_check_mark: TOP1ACC on test =56.79%
+####  																																:white_check_mark: TOP1ACC on test =57.61%
+
+|                     | Precision | Recall | F1-Score | Support |
+| :-----------------: | :-------: | :----: | :------: | :-----: |
+|      Carcinoma      |   0.532   |  0.7   |  0.604   |   120   |
+|  Light Dysplastic   |   0.680   | 0.685  |  0.683   |   146   |
+| Moderate Dysplastic |   0.419   | 0.402  |  0.410   |   117   |
+|   Normal Columnar   |   0.521   | 0.481  |   0.5    |   79    |
+| Normal Intermediate |   0.742   | 0.875  |  0.803   |   56    |
+| Normal Superficiel  |   0.959   | 0.783  |  0.862   |   60    |
+|  Severe Dysplastic  |   0.405   | 0.335  |  0.367   |   158   |
 
 |    predict\truth    | Car-  | L-Dys- | M-Dys- | N-Col- | N-Inter- | N-Sup- | S-Dys |
 | :-----------------: | :---: | :----: | :----: | :----: | :------: | :----: | :---: |
@@ -52,12 +70,20 @@
 
 #### Baseline4 - ResNet50 - Masked Region of SPIKaMeD Full Images
 
-####  								  																							:white_check_mark: TOP1ACC on test = 87.82%
+####  								  																							:white_check_mark: TOP1ACC on test = 86.13%
+
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |   0.815   | 0.957  |   0.88   |   23    |
+| Koilocytotic |   0.789   |  0.6   |  0.682   |   25    |
+| Metaplastic  |   0.815   | 0.786  |   0.8    |   28    |
+|  Parabasal   |   0.769   | 0.833  |   0.8    |   12    |
+| Superficial  |    0.8    | 0.923  |  0.857   |   13    |
 
 | predict\truth | Dys-  | Koi-  | Met-  | Par-  | Sup- |
 | :-----------: | :---: | :---: | :---: | :---: | :--: |
-| Dyskeratotic  | 0.869 | 0.087 | 0.043 |  0.0  | 0.0  |
-| Koilocytotic  | 0.08  | 0.64  | 0.12  |  0.0  | 0.16 |
+| Dyskeratotic  | 0.957 | 0.043 |  0.0  |  0.0  | 0.0  |
+| Koilocytotic  | 0.08  | 0.64  | 0.12  | 0.04  | 0.12 |
 |  Metaplastic  | 0.035 | 0.107 | 0.821 | 0.035 | 0.0  |
 |   Parabasal   | 0.167 |  0.0  |  0.0  | 0.833 | 0.0  |
 |  Superficial  |  0.0  |  0.0  |  0.0  |  0.0  | 1.0  |
