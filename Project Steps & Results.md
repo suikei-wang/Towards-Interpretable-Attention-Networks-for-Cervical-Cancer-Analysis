@@ -4,6 +4,14 @@
 
 #### :white_check_mark: TOP1ACC on test = 85.15%
 
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |   0.869   | 0.869  |  0.869   |   23    |
+| Koilocytotic |   0.889   |  0.64  |  0.744   |   25    |
+| Metaplastic  |   0.764   | 0.928  |  0.839   |   28    |
+|  Parabasal   |   0.923   |   1    |   0.96   |   12    |
+| Superficial  |   0.846   | 0.846  |  0.846   |   13    |
+
 | predict\truth | Dys-  | Koi-  | Met-  | Par- | Sup- |
 | :-----------: | :---: | :---: | :---: | :--: | :--: |
 | Dyskeratotic  | 0.869 |  0.0  | 0.130 | 0.0  | 0.0  |

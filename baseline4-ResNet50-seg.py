@@ -14,6 +14,7 @@ import copy
 import PIL.Image
 from io import BytesIO
 from IPython.display import clear_output, Image, display
+from sklearn.metrics import precision_recall_fscore_support as score
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def get_dataloaders(input_size, batch_size, shuffle = True):
@@ -262,22 +263,38 @@ if __name__ == '__main__':
 
     # Get the confusion matrix from test
     confusion_matrix = {x: [0,0,0,0,0] for x in class_name}
-    test_loader = dataloaders['test']
     running_top1_correct = 0
-    for inputs, labels in tqdm(test_loader):
+    loader = dataloaders['test']
+    labels_array = []
+    pred_array = []
+    for inputs, labels in tqdm(loader):
         inputs = inputs.to(device)
+        
+        
         labels = labels.to(device)
+        
         outputs = model(inputs)
         _, preds = torch.topk(outputs, k=1, dim=1)
+        
+        
         for i in range(len(labels)):
             original_label = int(labels[i])
+            labels_array.append(original_label)
+            pred_array.append(int(preds[i]))
             confusion_matrix[class_name[original_label]][int(preds[i])] += 1
             
         running_top1_correct += torch.sum(preds[:, 0] == labels.data)
 
-    epoch_top1_acc = float(running_top1_correct.double() / len(test_loader.dataset))
+    precision, recall, fscore, support = score(labels_array, pred_array)
+
+    epoch_top1_acc = float(running_top1_correct.double() / len(loader.dataset))
     percentage = {x: [y /sum(confusion_matrix[x]) for y in confusion_matrix[x]] for x in confusion_matrix.keys()}
     print()
     print("Confusion matrix")
     print("=" * 20)
     print(percentage)
+    print()
+    print("Precision:", precision)
+    print("Recall", recall)
+    print("F1-Score", fscore)
+    print("Support:", support)
