@@ -1,6 +1,8 @@
 ## Project Steps & Results
 
-#### Baseline - ResNet50 - SPIKaMed Whole Images					:white_check_mark: TOP1ACC on test = 85.15%
+#### Baseline1 - ResNet50 - SPIKaMed Full Images				
+
+#### :white_check_mark: TOP1ACC on test = 85.15%
 
 | predict\truth | Dys-  | Koi-  | Met-  | Par- | Sup- |
 | :-----------: | :---: | :---: | :---: | :--: | :--: |
@@ -10,7 +12,9 @@
 |   Parabasal   |  0.0  |  0.0  |  0.0  | 1.0  | 0.0  |
 |  Superficial  |  0.0  |  0.0  |  0.0  | 0.0  | 1.0  |
 
-#### Baseline - ResNet50 - SPIKaMed Cropped Images			  ​ :white_check_mark: TOP1ACC on test = 95.84%
+#### Baseline2 - ResNet50 - SPIKaMed Cropped Images			  
+
+#### :white_check_mark: TOP1ACC on test = 95.84%
 
 | predict\truth | Dys-  | Koi-  | Met-  | Par- | Sup-  |
 | :-----------: | :---: | :---: | :---: | :--: | :---: |
@@ -20,7 +24,7 @@
 |   Parabasal   |  0.0  |  0.0  |  0.0  | 1.0  |  0.0  |
 |  Superficial  | 0.012 |  0.0  |  0.0  | 0.0  | 0.988 |
 
-#### Baseline2 -  Baseline w cropped SPIKaMed model on Smear dataset
+#### Baseline3 -  Baseline w cropped SPIKaMed model on Smear dataset
 
 (Train:test=1:9, 50 epochs training)
 
@@ -38,7 +42,7 @@
 
 
 
-#### Model 1 - ResNet50 - Masked Region of SPIKaMeD Whole Images
+#### Baseline4 - ResNet50 - Masked Region of SPIKaMeD Full Images
 
 ####  								  																							:white_check_mark: TOP1ACC on test = 87.82%
 
@@ -52,10 +56,18 @@
 
 
 
-#### Model 2 - 
+#### Model 1 - ResNet50 with Attention layer - SPIKaMeD Full Images
 
 - Train the whole image on ResNet50 with Attention layer
 - Test on the whole image
+
+
+
+#### Model 2 - DenseNet - SPIKaMeD Full Images
+
+
+
+
 
 #### Graph CNN
 
