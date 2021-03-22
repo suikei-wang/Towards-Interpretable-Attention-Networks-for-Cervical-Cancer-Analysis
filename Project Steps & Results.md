@@ -99,6 +99,26 @@
 
 #### Model 2 - DenseNet - SPIKaMeD Full Images
 
+####  :white_check_mark: TOP1ACC on test = 89.11%
+
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |   0.846   | 0.957  |  0.898   |   23    |
+| Koilocytotic |   0.864   |  0.76  |  0.809   |   25    |
+| Metaplastic  |   0.929   | 0.929  |  0.929   |   28    |
+|  Parabasal   |     1     | 0.917  |  0.957   |   12    |
+| Superficial  |   0.857   | 0.923  |  0.889   |   13    |
+
+| predict\truth | Dys-  | Koi-  | Met-  | Par-  | Sup-  |
+| :-----------: | :---: | :---: | :---: | :---: | :---: |
+| Dyskeratotic  | 0.957 | 0.043 |  0.0  |  0.0  |  0.0  |
+| Koilocytotic  | 0.08  | 0.76  | 0.08  |  0.0  | 0.08  |
+|  Metaplastic  | 0.035 | 0.035 | 0.929 |  0.0  |  0.0  |
+|   Parabasal   | 0.083 |  0.0  |  0.0  | 0.917 |  0.0  |
+|  Superficial  |  0.0  | 0.077 |  0.0  |  0.0  | 0.923 |
+
+
+
 
 
 
