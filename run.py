@@ -7,8 +7,10 @@ import matplotlib.pyplot as plt
 
 from models.ResNet50 import initialize_model as ResNet50
 from models.Pretrained import initialize_model as Pretrained 
+from models.AttentionResnet import *
 from models.DenseNet import initialize_model as DenseNet
-from dataLodaer import get_dataloaders
+
+from dataLoader import get_dataloaders
 from train_evaluate import train_model
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -28,6 +30,7 @@ save_all_epochs = True
 
 model, input_size = ResNet50(num_classes = num_classes)    # baseline1 & baseline2 & baseline4
 # model, input_size = Pretrained(num_classes = num_classes)    # baseline3
+# model, input_size = ResidualAttentionModel_92(num_classes = num_classes)    # model1
 # model, input_size = DenseNet(num_classes = num_classes)    # model2
 
 model = model.to(device)
@@ -45,6 +48,7 @@ torch.save(trained_model.state_dict(), "weights/baseline1")
 # torch.save(trained_model.state_dict(), "weights/baseline2")
 # torch.save(trained_model.state_dict(), "weights/baseline3")
 # torch.save(trained_model.state_dict(), "weights/baseline4")
+# torch.save(trained_model.state_dict(), "weights/model1")
 # torch.save(trained_model.state_dict(), "weights/model2")
 
 # plot loss and accuracy

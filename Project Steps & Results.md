@@ -90,10 +90,9 @@
 
 
 
-#### Model 1 - ResNet50 with Attention layer - SPIKaMeD Full Images
+#### Model 1 - Residual Attention Network - SPIKaMeD Full Images
 
-- Train the whole image on ResNet50 with Attention layer
-- Test on the whole image
+
 
 
 
