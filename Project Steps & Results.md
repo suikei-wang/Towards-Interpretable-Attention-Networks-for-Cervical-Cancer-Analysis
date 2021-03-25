@@ -92,7 +92,23 @@
 
 #### Model 1 - Residual Attention Network - SPIKaMeD Full Images
 
+####  :white_check_mark: TOP1ACC on test = %
 
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |           |        |          |         |
+| Koilocytotic |           |        |          |         |
+| Metaplastic  |           |        |          |         |
+|  Parabasal   |           |        |          |         |
+| Superficial  |           |        |          |         |
+
+| predict\truth | Dys- | Koi- | Met- | Par- | Sup- |
+| :-----------: | :--: | :--: | :--: | :--: | :--: |
+| Dyskeratotic  |      |      |      |      |      |
+| Koilocytotic  |      |      |      |      |      |
+|  Metaplastic  |      |      |      |      |      |
+|   Parabasal   |      |      |      |      |      |
+|  Superficial  |      |      |      |      |      |
 
 
 

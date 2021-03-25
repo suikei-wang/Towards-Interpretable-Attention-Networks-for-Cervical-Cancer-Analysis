@@ -6,7 +6,7 @@ from sklearn.metrics import precision_recall_fscore_support as score
 from models.ResNet50 import initialize_model as ResNet50
 from models.Pretrained import initialize_model as Pretrained 
 from models.DenseNet import initialize_model as DenseNet
-from dataLodaer import get_dataloaders
+from dataLoader import get_dataloaders
 from train_evaluate import evaluate
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
