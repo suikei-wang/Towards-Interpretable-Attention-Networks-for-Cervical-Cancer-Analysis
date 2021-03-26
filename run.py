@@ -14,10 +14,11 @@ from dataLoader import get_dataloaders
 from train_evaluate import train_model
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-data_dir = 'separated-data'                     # baseline1
-# data_dir = 'separated-cropped-data'           # baseline2
-# data_dir = "separated-smear"                  # baseline3
-# data_dir = 'seg-separated-data'               # Baseline4
+data_dir = 'separated-data'                     # baseline1, model1, model2
+# data_dir = 'separated-cropped-data'           # baseline2, model3
+# data_dir = 'seg-separated-data'               # Baseline4, model4
+# data_dir = "separated-smear"                  # generalization test
+
 
 num_classes = 5
 batch_size = 16
@@ -29,9 +30,12 @@ save_all_epochs = True
 
 
 model, input_size = ResNet50(num_classes = num_classes)    # baseline1 & baseline2 & baseline4
-# model, input_size = Pretrained(num_classes = num_classes)    # baseline3
+# model, input_size = Pretrained(num_classes = num_classes)    # generalization test
 # model, input_size = ResidualAttentionModel_92(num_classes = num_classes)    # model1
 # model, input_size = DenseNet(num_classes = num_classes)    # model2
+# model, input_size = DenseNet(num_classes = num_classes)    # model3
+# model, input_size = DenseNet(num_classes = num_classes)    # model4
+
 
 model = model.to(device)
 dataloaders, class_name = get_dataloaders(input_size, batch_size, shuffle_datasets)
@@ -47,9 +51,11 @@ trained_model, train_losses, train_acc, val_losses, val_acc = train_model(model=
 torch.save(trained_model.state_dict(), "weights/baseline1")
 # torch.save(trained_model.state_dict(), "weights/baseline2")
 # torch.save(trained_model.state_dict(), "weights/baseline3")
-# torch.save(trained_model.state_dict(), "weights/baseline4")
+# torch.save(trained_model.state_dict(), "weights/generlization")
 # torch.save(trained_model.state_dict(), "weights/model1")
 # torch.save(trained_model.state_dict(), "weights/model2")
+# torch.save(trained_model.state_dict(), "weights/model3")
+# torch.save(trained_model.state_dict(), "weights/model4")
 
 # plot loss and accuracy
 print()
