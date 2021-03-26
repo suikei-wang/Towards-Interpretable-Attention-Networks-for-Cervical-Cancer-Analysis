@@ -22,7 +22,7 @@
 
 #### Baseline2 - ResNet50 - SPIKaMed Cropped Images			  
 
-#### :white_check_mark: TOP1ACC on test = 95.84%
+#### :white_check_mark: TOP1ACC on test = 95.11%
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -40,7 +40,27 @@
 |   Parabasal   |  0.0  |  0.0  |  0.0  | 1.0  |  0.0  |
 |  Superficial  | 0.012 |  0.0  |  0.0  | 0.0  | 0.988 |
 
-#### Baseline3 -  Baseline w cropped SPIKaMed model on Smear dataset
+#### Baseline3 - ResNet50 - Masked Region of SPIKaMeD Full Images
+
+####  								  																							:white_check_mark: TOP1ACC on test = 86.13%
+
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |   0.815   | 0.957  |   0.88   |   23    |
+| Koilocytotic |   0.789   |  0.6   |  0.682   |   25    |
+| Metaplastic  |   0.815   | 0.786  |   0.8    |   28    |
+|  Parabasal   |   0.769   | 0.833  |   0.8    |   12    |
+| Superficial  |    0.8    | 0.923  |  0.857   |   13    |
+
+| predict\truth | Dys-  | Koi-  | Met-  | Par-  | Sup- |
+| :-----------: | :---: | :---: | :---: | :---: | :--: |
+| Dyskeratotic  | 0.957 | 0.043 |  0.0  |  0.0  | 0.0  |
+| Koilocytotic  | 0.08  | 0.64  | 0.12  | 0.04  | 0.12 |
+|  Metaplastic  | 0.035 | 0.107 | 0.821 | 0.035 | 0.0  |
+|   Parabasal   | 0.167 |  0.0  |  0.0  | 0.833 | 0.0  |
+|  Superficial  |  0.0  |  0.0  |  0.0  |  0.0  | 1.0  |
+
+#### Generalization Test -  Baseline w cropped SPIKaMed model on Smear dataset
 
 (Train:test=1:9, 50 epochs training)
 
@@ -68,47 +88,25 @@
 
 
 
-#### Baseline4 - ResNet50 - Masked Region of SPIKaMeD Full Images
-
-####  								  																							:white_check_mark: TOP1ACC on test = 86.13%
-
-|              | Precision | Recall | F1-Score | Support |
-| :----------: | :-------: | :----: | :------: | :-----: |
-| Dyskeratotic |   0.815   | 0.957  |   0.88   |   23    |
-| Koilocytotic |   0.789   |  0.6   |  0.682   |   25    |
-| Metaplastic  |   0.815   | 0.786  |   0.8    |   28    |
-|  Parabasal   |   0.769   | 0.833  |   0.8    |   12    |
-| Superficial  |    0.8    | 0.923  |  0.857   |   13    |
-
-| predict\truth | Dys-  | Koi-  | Met-  | Par-  | Sup- |
-| :-----------: | :---: | :---: | :---: | :---: | :--: |
-| Dyskeratotic  | 0.957 | 0.043 |  0.0  |  0.0  | 0.0  |
-| Koilocytotic  | 0.08  | 0.64  | 0.12  | 0.04  | 0.12 |
-|  Metaplastic  | 0.035 | 0.107 | 0.821 | 0.035 | 0.0  |
-|   Parabasal   | 0.167 |  0.0  |  0.0  | 0.833 | 0.0  |
-|  Superficial  |  0.0  |  0.0  |  0.0  |  0.0  | 1.0  |
-
-
-
 #### Model 1 - Residual Attention Network - SPIKaMeD Full Images
 
-####  :white_check_mark: TOP1ACC on test = %
+####  :white_check_mark: TOP1ACC on test = 84.16%
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
-| Dyskeratotic |           |        |          |         |
-| Koilocytotic |           |        |          |         |
-| Metaplastic  |           |        |          |         |
-|  Parabasal   |           |        |          |         |
-| Superficial  |           |        |          |         |
+| Dyskeratotic |   0.833   | 0.869  |  0.851   |   23    |
+| Koilocytotic |   0.857   |  0.72  |  0.783   |   25    |
+| Metaplastic  |   0.862   | 0.893  |  0.877   |   28    |
+|  Parabasal   |   0.846   | 0.917  |   0.88   |   12    |
+| Superficial  |   0.786   | 0.846  |  0.815   |   13    |
 
-| predict\truth | Dys- | Koi- | Met- | Par- | Sup- |
-| :-----------: | :--: | :--: | :--: | :--: | :--: |
-| Dyskeratotic  |      |      |      |      |      |
-| Koilocytotic  |      |      |      |      |      |
-|  Metaplastic  |      |      |      |      |      |
-|   Parabasal   |      |      |      |      |      |
-|  Superficial  |      |      |      |      |      |
+| predict\truth | Dys-  | Koi-  | Met-  | Par-  | Sup-  |
+| :-----------: | :---: | :---: | :---: | :---: | :---: |
+| Dyskeratotic  | 0.869 | 0.086 | 0.043 |  0.0  |  0.0  |
+| Koilocytotic  | 0.08  | 0.72  | 0.08  |  0.0  | 0.12  |
+|  Metaplastic  | 0.036 |  0.0  | 0.893 | 0.071 |  0.0  |
+|   Parabasal   | 0.083 |  0.0  |  0.0  | 0.917 |  0.0  |
+|  Superficial  |  0.0  | 0.077 | 0.077 |  0.0  | 0.846 |
 
 
 
@@ -132,9 +130,65 @@
 |   Parabasal   | 0.083 |  0.0  |  0.0  | 0.917 |  0.0  |
 |  Superficial  |  0.0  | 0.077 |  0.0  |  0.0  | 0.923 |
 
+#### Model 3 - DenseNet - SPIKaMeD Cropped Images
 
+####  :white_check_mark: TOP1ACC on test = 95.84%
 
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |   0.952   | 0.963  |  0.958   |   82    |
+| Koilocytotic |   0.913   | 0.879  |  0.896   |   83    |
+| Metaplastic  |   0.949   | 0.938  |  0.943   |   80    |
+|  Parabasal   |    1.0    | 0.988  |  0.994   |   80    |
+| Superficial  |   0.955   |  1.0   |  0.977   |   84    |
 
+| predict\truth | Dys-  | Koi-  | Met-  | Par-  | Sup-  |
+| :-----------: | :---: | :---: | :---: | :---: | :---: |
+| Dyskeratotic  | 0.963 | 0.037 |  0.0  |  0.0  |  0.0  |
+| Koilocytotic  | 0.048 | 0.879 | 0.048 |  0.0  | 0.024 |
+|  Metaplastic  |  0.0  | 0.05  | 0.938 |  0.0  | 0.012 |
+|   Parabasal   |  0.0  |  0.0  |  0.0  | 0.988 | 0.012 |
+|  Superficial  |  0.0  |  0.0  |  0.0  |  0.0  |  1.0  |
+
+#### Model 4 - DenseNet - Masked Region of SPIKaMeD Full Images
+
+####  :white_check_mark: TOP1ACC on test = 90.10%
+
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |   0.913   | 0.913  |  0.913   |   23    |
+| Koilocytotic |   0.875   |  0.84  |  0.857   |   25    |
+| Metaplastic  |   0.893   | 0.893  |  0.893   |   28    |
+|  Parabasal   |    1.0    |  0.75  |  0.857   |   12    |
+| Superficial  |   0.765   |  1.0   |  0.867   |   13    |
+
+| predict\truth | Dys-  | Koi-  | Met-  | Par- | Sup-  |
+| :-----------: | :---: | :---: | :---: | :--: | :---: |
+| Dyskeratotic  | 0.913 | 0.087 |  0.0  | 0.0  |  0.0  |
+| Koilocytotic  | 0.04  | 0.84  | 0.04  | 0.0  | 0.08  |
+|  Metaplastic  | 0.036 |  0.0  | 0.893 | 0.0  | 0.071 |
+|   Parabasal   |  0.0  | 0.083 | 0.167 | 0.75 |  0.0  |
+|  Superficial  |  0.0  |  0.0  |  0.0  | 0.0  |  1.0  |
+
+#### Model 5 - Attention DenseNet - SPIKaMeD Full Images
+
+####  :white_check_mark: TOP1ACC on test = %
+
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |           |        |          |         |
+| Koilocytotic |           |        |          |         |
+| Metaplastic  |           |        |          |         |
+|  Parabasal   |           |        |          |         |
+| Superficial  |           |        |          |         |
+
+| predict\truth | Dys- | Koi- | Met- | Par- | Sup- |
+| :-----------: | :--: | :--: | :--: | :--: | :--: |
+| Dyskeratotic  |      |      |      |      |      |
+| Koilocytotic  |      |      |      |      |      |
+|  Metaplastic  |      |      |      |      |      |
+|   Parabasal   |      |      |      |      |      |
+|  Superficial  |      |      |      |      |      |
 
 
 
