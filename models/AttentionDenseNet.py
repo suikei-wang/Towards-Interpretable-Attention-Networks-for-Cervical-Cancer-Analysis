@@ -35,5 +35,3 @@ def initialize_model(num_classes):
 )
     return model_ft, input_size
 
-model, input_size = initialize_model(num_classes=5)
-
