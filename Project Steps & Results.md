@@ -170,7 +170,27 @@
 |   Parabasal   |  0.0  | 0.083 | 0.167 | 0.75 |  0.0  |
 |  Superficial  |  0.0  |  0.0  |  0.0  | 0.0  |  1.0  |
 
-#### Model 5 - Attention DenseNet - SPIKaMeD Full Images
+#### Model 5 - Channel Attention DenseNet - SPIKaMeD Full Images
+
+####  :white_check_mark: TOP1ACC on test = 91.09%
+
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |   0.958   |   1    |  0.978   |   23    |
+| Koilocytotic |   0.952   |  0.8   |  0.869   |   25    |
+| Metaplastic  |   0.867   | 0.929  |  0.896   |   28    |
+|  Parabasal   |    1.0    |  1.0   |   1.0    |   12    |
+| Superficial  |   0.857   | 0.923  |  0.889   |   13    |
+
+| predict\truth | Dys-  | Koi-  | Met-  | Par- | Sup-  |
+| :-----------: | :---: | :---: | :---: | :--: | :---: |
+| Dyskeratotic  |  1.0  |  0.0  |  0.0  | 0.0  |  0.0  |
+| Koilocytotic  |  0.0  |  0.8  | 0.12  | 0.0  | 0.08  |
+|  Metaplastic  | 0.036 | 0.036 | 0.929 | 0.0  |  0.0  |
+|   Parabasal   |  0.0  |  0.0  |  0.0  | 1.0  |  0.0  |
+|  Superficial  |  0.0  |  0.0  | 0.077 | 0.0  | 0.923 |
+
+#### Model 6 - Channel Attention DenseNet - SPIKaMeD Cropped Images
 
 ####  :white_check_mark: TOP1ACC on test = %
 
@@ -190,7 +210,25 @@
 |   Parabasal   |      |      |      |      |      |
 |  Superficial  |      |      |      |      |      |
 
+#### Model 7 - Channel Attention DenseNet - SPIKaMeD Masked Images
 
+####  :white_check_mark: TOP1ACC on test = %
+
+|              | Precision | Recall | F1-Score | Support |
+| :----------: | :-------: | :----: | :------: | :-----: |
+| Dyskeratotic |           |        |          |         |
+| Koilocytotic |           |        |          |         |
+| Metaplastic  |           |        |          |         |
+|  Parabasal   |           |        |          |         |
+| Superficial  |           |        |          |         |
+
+| predict\truth | Dys- | Koi- | Met- | Par- | Sup- |
+| :-----------: | :--: | :--: | :--: | :--: | :--: |
+| Dyskeratotic  |      |      |      |      |      |
+| Koilocytotic  |      |      |      |      |      |
+|  Metaplastic  |      |      |      |      |      |
+|   Parabasal   |      |      |      |      |      |
+|  Superficial  |      |      |      |      |      |
 
 #### Graph CNN
 
