@@ -212,23 +212,29 @@
 
 #### Model 7 - Channel Attention DenseNet - SPIKaMeD Masked Images
 
-####  :white_check_mark: TOP1ACC on test = %
+####  :white_check_mark: TOP1ACC on test = 87.13%
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
-| Dyskeratotic |           |        |          |         |
-| Koilocytotic |           |        |          |         |
-| Metaplastic  |           |        |          |         |
-|  Parabasal   |           |        |          |         |
-| Superficial  |           |        |          |         |
+| Dyskeratotic |    1.0    | 0.913  |  0.955   |   23    |
+| Koilocytotic |   0.710   |  0.88  |  0.786   |   25    |
+| Metaplastic  |    0.8    | 0.857  |  0.828   |   28    |
+|  Parabasal   |    1.0    | 0.833  |  0.909   |   12    |
+| Superficial  |   0.889   | 0.615  |  0.727   |   13    |
 
-| predict\truth | Dys- | Koi- | Met- | Par- | Sup- |
-| :-----------: | :--: | :--: | :--: | :--: | :--: |
-| Dyskeratotic  |      |      |      |      |      |
-| Koilocytotic  |      |      |      |      |      |
-|  Metaplastic  |      |      |      |      |      |
-|   Parabasal   |      |      |      |      |      |
-|  Superficial  |      |      |      |      |      |
+| predict\truth | Dys-  | Koi-  | Met-  | Par-  | Sup-  |
+| :-----------: | :---: | :---: | :---: | :---: | :---: |
+| Dyskeratotic  | 0.913 | 0.043 | 0.043 |  0.0  |  0.0  |
+| Koilocytotic  |  0.0  | 0.88  | 0.08  |  0.0  | 0.04  |
+|  Metaplastic  |  0.0  | 0.143 | 0.857 |  0.0  |  0.0  |
+|   Parabasal   |  0.0  | 0.083 | 0.083 | 0.833 |  0.0  |
+|  Superficial  |  0.0  | 0.231 | 0.154 |  0.0  | 0.615 |
+
+
+
+
+
+
 
 #### Graph CNN
 
