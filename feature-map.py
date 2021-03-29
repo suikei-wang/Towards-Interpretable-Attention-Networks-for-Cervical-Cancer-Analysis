@@ -23,9 +23,12 @@ def feature_visualization(model, img):
 
     conv_img = model(torch.Tensor(img_batch))
     conv_img = np.squeeze(conv_img, axis=0)
+    conv_vector = conv_img.detach().numpy()
     conv_img = conv_img.reshape((input_size, input_size)).detach().numpy()
     cv2.imshow('conv', conv_img)
     cv2.waitKey()
+    return conv_vector
 
 
-feature_visualization(model, test)
+feature_vector = feature_visualization(model, test)
+print(feature_vector)
