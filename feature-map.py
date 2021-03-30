@@ -7,11 +7,12 @@ from models.AttentionDenseNet import *
 
 # load the original model but remove the fc layer
 model, input_size = initialize_model(num_classes=5)
+model.load_state_dict(torch.load('weights/model5', map_location=torch.device('cpu')))
 model = torch.nn.Sequential(*(list(model.children())[:-1]))
 
 
 # test an image
-test = cv2.imread('separated-data/test/im_Dyskeratotic/001.bmp')
+test = cv2.imread('separated-data/test/im_Koilocytotic/001.bmp')
 dim = (input_size, input_size)
 test = cv2.resize(test, dim)
 test = torch.Tensor(test)
