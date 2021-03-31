@@ -15,8 +15,8 @@ test = cv2.imread('separated-data/test/im_Koilocytotic/001.bmp')
 dim = (input_size, input_size)
 test = cv2.resize(test, dim)
 test = torch.Tensor(test)
-def feature_visualization(model, img):
-    '''prints the cat as a 2d array'''
+
+def feature_extractor(model, img):
     img_batch = np.expand_dims(img,axis=0)
     img_batch = torch.reshape(torch.Tensor(img_batch), (1, 3, input_size, input_size))
 
@@ -26,4 +26,4 @@ def feature_visualization(model, img):
     return conv_vector
 
 
-feature_vector = feature_visualization(model, test)
+feature_vector = feature_extractor(model, test)
