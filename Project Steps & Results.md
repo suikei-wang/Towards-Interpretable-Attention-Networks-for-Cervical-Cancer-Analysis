@@ -176,7 +176,7 @@
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
-| Dyskeratotic |   0.958   |   1    |  0.978   |   23    |
+| Dyskeratotic |   0.958   |  1.0   |  0.978   |   23    |
 | Koilocytotic |   0.952   |  0.8   |  0.869   |   25    |
 | Metaplastic  |   0.867   | 0.929  |  0.896   |   28    |
 |  Parabasal   |    1.0    |  1.0   |   1.0    |   12    |
