@@ -9,7 +9,7 @@ from models.AttentionDenseNet import initialize_model as Attention_DenseNet
 import argparse
 import os
 
-def calculate_outputs_and_gradients(inputs, model, target_label_idx, cuda=False):
+def calculate_outputs_and_gradients(inputs, model, target_label_idx, cuda=True):
     # do the pre-processing
     predict_idx = None
     gradients = []
@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
     # calculae the integrated gradients 
     attributions = random_baseline_integrated_gradients(img, model, label_index, calculate_outputs_and_gradients, \
-                                                        steps=50, num_random_trials=10, cuda=False)
+                                                        steps=50, num_random_trials=10, cuda=True)
     img_integrated_gradient_overlay = visualize(attributions, img, clip_above_percentile=99, clip_below_percentile=0, \
                                                 overlay=True, mask_mode=True)
     img_integrated_gradient = visualize(attributions, img, clip_above_percentile=99, clip_below_percentile=0, overlay=False)
