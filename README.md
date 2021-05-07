@@ -6,15 +6,17 @@ See [requirement.txt](./requirement.txt) for further details.
 
 ### Dataset
 [SIPaKMeD](https://www.cs.uoi.gr/~marina/sipakmed.html) datasets is an open-source cervical cell image database. It consists of two different types of data: 966 multi-cell images and 4049 isolated cell images. There are five different categories of cervical cells in this dataset: superficial-intermediate, parabasal, koilocytotic, dysketarotic and metaplastic. 
+
 <p  align="middle">
-  <img src="./vis_densenet.jpeg" width="150" />
-  <img src="./vis_att_densenet.jpeg" width="150" />
-  <img src="./vis_att_densenet.jpeg" width="150" />
-  <img src="./vis_att_densenet.jpeg" width="150" />
-  <img src="./vis_att_densenet.jpeg" width="150" />
+  <img src="./sample/dys.png" width="100" />
+  <img src="./sample/koi.png" width="100" />
+  <img src="./sample/met.png" width="100" />
+  <img src="./sample/par.png" width="100" />
+  <img src="./sample/sup.png" width="100" />
   <br>
   Multi-cells images in SIPaKMeD dataset
 </p>
+
 
 In this paper, we use the multi-cells images for main experiments. We also verified our models on isolated cell images and segmented region of multi-cells images. 
 
