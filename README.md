@@ -50,6 +50,7 @@ The residual channel attention mechaism shows its effectiveness in the classific
 
 ## Reference
 For the integrated gradient visualization: https://github.com/TianhongDai/integrated-gradient-pytorch
+
 For the residual channel attention network: https://github.com/yulunzhang/RCAN
 
-## How to cite this paper
+
