@@ -53,3 +53,14 @@ For the integrated gradient visualization: https://github.com/TianhongDai/integr
 
 For the residual channel attention network: https://github.com/yulunzhang/RCAN
 
+
+
+## Citation
+```
+@article{wang2021towards,
+  title={Towards Interpretable Attention Networks for Cervical Cancer Analysis},
+  author={Wang, Ruiqi and Armin, Mohammad Ali and Denman, Simon and Petersson, Lars and Ahmedt-Aristizabal, David},
+  journal={arXiv preprint arXiv:2106.00557},
+  year={2021}
+}
+```
