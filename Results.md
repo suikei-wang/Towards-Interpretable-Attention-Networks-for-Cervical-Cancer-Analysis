@@ -2,7 +2,7 @@
 
 #### Baseline1 - ResNet50 - SPIKaMed Full Images				
 
-#### :white_check_mark: TOP1ACC on test = 85.15%
+#### :white_check_mark: TOP1ACC on test = ==85.15%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -22,7 +22,7 @@
 
 #### Baseline2 - ResNet50 - SPIKaMed Cropped Images			  
 
-#### :white_check_mark: TOP1ACC on test = 95.11%
+#### :white_check_mark: TOP1ACC on test = ==95.11%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -42,7 +42,7 @@
 
 #### Baseline3 - ResNet50 - Masked Region of SPIKaMeD Full Images
 
-####  								  																							:white_check_mark: TOP1ACC on test = 86.13%
+####  								  																							:white_check_mark: TOP1ACC on test = ==86.13%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -64,7 +64,7 @@
 
 (Train:test=1:9, 50 epochs training)
 
-####  																																:white_check_mark: TOP1ACC on test =57.61%
+####  																																:white_check_mark: TOP1ACC on test = ==57.61%==
 
 |                     | Precision | Recall | F1-Score | Support |
 | :-----------------: | :-------: | :----: | :------: | :-----: |
@@ -90,7 +90,7 @@
 
 #### Model 1 - Residual Attention Network - SPIKaMeD Full Images
 
-####  :white_check_mark: TOP1ACC on test = 84.16%
+####  :white_check_mark: TOP1ACC on test = ==84.16%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -112,7 +112,7 @@
 
 #### Model 2 - DenseNet - SPIKaMeD Full Images
 
-####  :white_check_mark: TOP1ACC on test = 89.11%
+####  :white_check_mark: TOP1ACC on test = ==89.11%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -132,7 +132,7 @@
 
 #### Model 3 - DenseNet - SPIKaMeD Cropped Images
 
-####  :white_check_mark: TOP1ACC on test = 95.84%
+####  :white_check_mark: TOP1ACC on test = ==95.84%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -152,7 +152,7 @@
 
 #### Model 4 - DenseNet - Masked Region of SPIKaMeD Full Images
 
-####  :white_check_mark: TOP1ACC on test = 90.10%
+####  :white_check_mark: TOP1ACC on test = ==90.10%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -172,7 +172,7 @@
 
 #### Model 5 - Channel Attention DenseNet - SPIKaMeD Full Images
 
-####  :white_check_mark: TOP1ACC on test = 91.09%
+####  :white_check_mark: TOP1ACC on test = ==91.09%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -192,7 +192,7 @@
 
 #### Model 6 - Channel Attention DenseNet - SPIKaMeD Cropped Images
 
-####  :white_check_mark: TOP1ACC on test = 96.33%
+####  :white_check_mark: TOP1ACC on test = ==96.33%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -212,7 +212,7 @@
 
 #### Model 7 - Channel Attention DenseNet - SPIKaMeD Masked Images
 
-####  :white_check_mark: TOP1ACC on test = 87.13%
+####  :white_check_mark: TOP1ACC on test = ==87.13%==
 
 |              | Precision | Recall | F1-Score | Support |
 | :----------: | :-------: | :----: | :------: | :-----: |
@@ -229,7 +229,6 @@
 |  Metaplastic  |  0.0  | 0.143 | 0.857 |  0.0  |  0.0  |
 |   Parabasal   |  0.0  | 0.083 | 0.083 | 0.833 |  0.0  |
 |  Superficial  |  0.0  | 0.231 | 0.154 |  0.0  | 0.615 |
-
 
 
 
